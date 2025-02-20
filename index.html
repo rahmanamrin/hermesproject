@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Website</title>
+<style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .header { background: #6ed067; color: white; display: flex; flex-direction: row; align-items: center; padding: 10px 20px; }
+        .header h1 { margin: 0 auto; font-size: 36px; }
+        .logo{ width: 100px; height: 100px; margin-bottom: 5px;}
+        .nav { display: flex; justify-content: center; padding: 10px; background: #4881b6; }
+        .nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 18px; }
+        .hero { position: relative; overflow: hidden; height: 400px; background: #ddd; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; display: none; }
+        .hero img.active { display: block; }
+        .buttons { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+        .buttons button { background: rgba(0, 0, 0, 0.5); color: rgb(103, 215, 58); border: none; padding: 10px; font-size: 24px; cursor: pointer; }
+        .buttons button:hover { background: rgba(0, 0, 0, 0.8); }
+        .section { padding: 50px; text-align: center; }
+        .about { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+        .about img { width: 100%; max-width: 400px; margin-bottom: 20px; }
+        .about div { width: 100%; max-width: 600px; }
+        .sponsors img { width: 100px; margin: 10px; }
+        .footer { background: #6ed067; color: white; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 20px; }
+        .footer div { flex: 1; min-width: 250px; text-align: center; }
+        .footer a { color: white; text-decoration: none; }
+        .copyright { width: 100%; text-align: center; margin: 20px; font-size: 14px; }
+        @media (min-width: 768px) {
+            .about { flex-wrap: nowrap; }
+            .about img { margin-right: 20px; margin-bottom: 0; }
+            .about div { width: 50%; }
+        }
+</style>
+</head>
+<body>
+    <div id="header">
+        <div class="header">
+            <a href="/index.html"><img src="logo.jpg" alt="Company Logo" class="logo"></a>
+            <h1>Kaziranga National Park</h1></div>
+            <div class="nav">
+                <a href="index.html">Home</a>
+                <a href="service.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+<div class="hero">
+<img src="slide1.jpg" class="active" alt="Slide 1">
+<img src="slide2.jpg" alt="Slide 2">
+<img src="slide3.jpg" alt="Slide 3">
+<img src="slide4.jpg" alt="Slide 4">
+<img src="logo.jpg" class="logo" alt="Company Logo">
+<div class="buttons">
+<button onclick="prevSlide()">&#60;</button>
+<button onclick="nextSlide()">&#62;</button>
+</div>
+</div>
+<div class="section about">
+<img src="logo.jpg" alt="Company Image">
+<div>
+<h2>About Us</h2>
+<p>We are a company dedicated to providing the best services. Our expertise lies in various domains.</p>
+</div>
+</div>
+<div class="section sponsors">
+<h2>Our Sponsors</h2>
+<div>
+<img src="sponsor1.jpg" alt="Sponsor 1">
+<img src="sponsor2.jpg" alt="Sponsor 2">
+<img src="sponsor3.jpg" alt="Sponsor 3">
+<img src="sponsor4.jpg" alt="Sponsor 4">
+</div>
+</div>
+<div class="footer">
+<div>
+<h3>Contact Us</h3>
+<form>
+<input type="text" placeholder="Your Name" required><br>
+<input type="email" placeholder="Your Email" required><br>
+<textarea placeholder="Your Message" required></textarea><br>
+<button type="submit">Send</button>
+</form>
+</div>
+<div>
+<h3>Sitemap</h3>
+<a href="#">Home</a><br>
+<a href="#">About</a><br>
+<a href="#">Sponsors</a>
+</div>
+<div>
+<h3>Business Contact</h3>
+<p><a href="tel:+918473023451">+918473023451</a></p>
+<p><a href="mailto:amrin@gmail.com">amrin@gmail.com</a></p>
+</div>
+</div>
+<div class="copyright">
+    &copy; 2025 Hermes. All rights reserved.
+</div>
+<script>
+        document.getElementById("header").innerHTML = `
+<div class="header">
+<a href="/index.html"><img src="logo.jpg" alt="Company Logo" class="logo"></a>
+<h1>Kaziranga National Park</h1>
+</div>
+<div class="nav">
+<a href="index.html">Home</a>
+<a href="service.html">Services</a>
+<a href="contact.html">Contact</a>
+</div>`;
+ 
+        let index = 0;
+        const slides = document.querySelectorAll(".hero img");
+ 
+        function showSlide(i) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[i].classList.add("active");
+        }
+ 
+        function prevSlide() {
+            index = (index - 1 + slides.length - 1) % (slides.length - 1);
+            showSlide(index);
+        }
+ 
+        function nextSlide() {
+            index = (index + 1) % (slides.length - 1);
+            showSlide(index);
+        }
+</script>
+</body>
+</html>
